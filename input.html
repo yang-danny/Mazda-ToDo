@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newtask</title>
+    <style>
+        .inputTask {
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 3%;
+            color: #605858;
+            background-color: #d9d9d9;
+            font-weight: 700;
+        }
+
+        .inputTask h2{
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .newTask {
+            width: 80%;
+            margin: 0 auto;
+            padding-bottom: 10px;
+
+        }
+
+        .newTask div {
+            margin: 20px 0;
+            position: relative;
+
+        }
+
+        .info{
+            position: absolute;
+            right: 0;
+            width: 50%;
+            border-radius: 5px;
+            border:1px solid #605858;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: space-around;
+            
+
+        }
+
+        .reset {
+            background-color: #ffc107;
+            color: #605858;
+            font-weight: 700;
+        }
+
+        .submit {
+            background-color: #198754;
+            color: #605858;
+            font-weight: 700;
+        }
+
+        button {
+            border:0px;
+            border-radius: 5px;
+            color: #605858;
+            font-weight: 700;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="inputTask">
+
+        <h2>New task</h2>
+        <form class="newTask" action="submit">
+
+            <div class="taskName">
+                <label for="taskName"> Name:</label>
+                <input class="info" type="text" id="taskName" required="required">
+            </div>
+
+            <div class="taskDes">
+                <label for="taskDes"> Description:</label> 
+                <input class="info" type="textarea" id="taskDes" required="required">
+
+            </div>
+
+            <div class="assignTo">
+                <label for="assignTo">Assigned to:</label>
+                <select class="info" id="assignTo" required="required">
+                    <option>Meiri</option>
+                    <option>Liz</option>
+                    <option>Yi</option>
+                    <option>Others</option>
+                </select>
+            </div>
+
+            <div class="dueDate">
+                <label for="dueDate"> Due date:</label>
+                <input class="info" type="date" id="dueDate" required="required">
+            </div>
+
+            <div class="taskStatus">
+                <label for="taskSt">Status:</label>
+                <select class="info" id="taskSt" required="required">
+                    <option>To do</option>
+                    <option>In process</option>
+                    <option>Review</option>
+                    <option>Completed</option>
+                </select>
+            </div>
+
+            <div class="comment">
+                <label for="comment"> Comment:</label> 
+                <input  class="info" type="textarea" id="comment">
+
+            </div>
+
+            <div class="btn">
+                <!-- <input type="submit" value="Submit">
+                <input type="reset" value="Reset"> -->
+                <button class="submit">Submit</button>
+                <button class="reset">Reset</button>
+                <button class="cancel">Cancel</button>
+            </div>
+
+
+
+        </form>
+    </div>
+</body>
+
+</html>
