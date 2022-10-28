@@ -84,62 +84,118 @@
     </div>
     <div class="col">
         <div class="task rounded p-3 shadow">
-            <div class="container text-center ">
-                <div class="row justify-content-center">
-                  <div class="col-6 col-sm-4 bg-warning m-2 task-box p-1 rounded shadow box-1 text-light rotated-left">
-                        <small class="fst-italic" >12:03:28 27/10/2022</small>
-                        <h5>Task 1</h5>
-                        <div class="spinner-border text-light" role="status"> </div>
-                            <span >TO DO</span>
-                            <div class="spinner-grow text-light" role="status">  </div>
-                                <span>Low</span>
+            <div class="container text-center">
+              <div class="list-group ">
+                <div class="list-group-item task">
+                  <div class="row">
+                    <div class="col">
+                      <div class="card mb-3 bg-warning m-2 task-box p-1 rounded shadow box-1 text-light rotated-left" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-light"><small class="fst-italic" >12:03:28 27/10/2022</small></div>
+                        <div class="card-body text-light">
+                          <h5>Task 1</h5>
+                          <div class="spinner-border text-light" role="status"> </div>
+                              <span >TO DO</span>
+                              <div class="spinner-grow text-light" role="status">  </div>
+                                  <span>Low</span>
+                        </div>
+                        <div class="card-footer bg-transparent border-light">              
+                            <button type="submit" class="btn btn-success shadow">Update</button>
+                            <button type="submit" class="btn btn-danger shadow">Reomove</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card mb-3 m-2 task-box rounded shadow box-2 text-light rotated-right" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-light"><small class="fst-italic" >12:03:28 27/10/2022</small></div>
+                        <div class="card-body text-light">
+                          <h5>Task 2</h5>
+                          <div class="spinner-border text-info" role="status"> </div>
+                          <span >IN PROGRESS</span><br>
+                          <div class="spinner-grow text-info" role="status">  </div>
+                              <span>Medium</span>
+                        </div>
+                        <div class="card-footer bg-transparent border-light">
+                            <button type="submit" class="btn btn-success shadow">Update</button>
+                            <button type="submit" class="btn btn-danger shadow">Reomove</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-6 col-sm-4 m-2 task-box p-1 rounded shadow box-2 text-light rotated-right">
-                    <small class="fst-italic" >12:03:28 27/10/2022</small>
-                    <h5>Task 2</h5>
-                    <div class="spinner-border text-info" role="status"> </div>
-                        <span >IN PROGRESS</span><br>
-                        <div class="spinner-grow text-info" role="status">  </div>
-                            <span>Medium</span>
-                  </div>
-
-                  <div class="w-100 d-none d-md-block"></div>
-              
-                  <div class="col-6 col-sm-4 bg-success m-2 task-box p-2 rounded shadow box-3 text-light">
-                    <small class="fst-italic" >12:03:28 27/10/2022</small>
-                    <h5>Task 3</h5>
-                    <div class="spinner-border text-warning" role="status"> </div>
-                        <span >REVIEW</span>
-                        <div class="spinner-grow text-warning" role="status">  </div>
-                            <span>High</span>
-                  </div>
-                  <div class="col-6 col-sm-4 bg-info m-2 task-box p-2 rounded shadow box-4 text-light">
-                     <small class="fst-italic" >12:03:28 27/10/2022</small>
-                    <h5>Task 4</h5>
-                    <div class="spinner-border text-success" role="status"> </div>
+                </div>
+                <div class="list-group-item task">
+                  <div class="row">
+                    <div class="col">
+                      <div class="card mb-3 m-2 bg-success m-2 task-box p-2 rounded shadow box-3 text-light" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-light"><small class="fst-italic" >12:03:28 27/10/2022</small></div>
+                        <div class="card-body text-light">
+                          <h5>Task 3</h5>
+                          <div class="spinner-border text-warning" role="status"> </div>
+                          <span >REVIEW</span>
+                          <div class="spinner-grow text-warning" role="status">  </div>
+                              <span>High</span>
+                        </div>
+                        <div class="card-footer bg-transparent border-light">              
+                            <button type="submit" class="btn btn-success shadow">Update</button>
+                            <button type="submit" class="btn btn-danger shadow">Reomove</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card mb-3 bg-info m-2 task-box p-2 rounded shadow box-4 text-light" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-light"><small class="fst-italic" >12:03:28 27/10/2022</small></div>
+                        <div class="card-body text-light">
+                          <h5>Task 4</h5>
+                          <div class="spinner-border text-success" role="status"> </div>
                         <span >DONE</span>
                         <div class="spinner-grow text-danger" role="status">  </div>
                             <span>Urgent</span>
                         </div>
-                  <div class="w-100 d-none d-md-block"></div>
-              
-                  <div class="col-6 col-sm-4 m-2 task-box p-2 rounded shadow box-5 text-light rotated-right">
-                    <small class="fst-italic" >12:03:28 27/10/2022</small>
-                    <h5>Task 5</h5>
-                    <div class="spinner-border text-light" role="status"> </div>
+                        <div class="card-footer bg-transparent border-light">
+                            <button type="submit" class="btn btn-success shadow">Update</button>
+                            <button type="submit" class="btn btn-danger shadow">Reomove</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item task">
+                  <div class="row">
+                    <div class="col">
+                      <div class="card mb-3 m-2 task-box p-1 rounded shadow box-5 text-light rotated-right" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-light"><small class="fst-italic" >12:03:28 27/10/2022</small></div>
+                        <div class="card-body text-light">
+                          <h5>Task 5</h5>
+                          <div class="spinner-border text-light" role="status"> </div>
                         <span >TO DO</span>
                         <div class="spinner-grow text-warning" role="status">  </div>
                             <span>High</span>
-                  </div>
-                  <div class="col-6 col-sm-4 m-2 task-box p-2 rounded shadow box-6 text-light rotated-left">
-                    <small class="fst-italic" >12:03:28 27/10/2022</small>
-                    <h5>Task 6</h5>
-                    <div class="spinner-border text-warning" role="status"> </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-light">              
+                            <button type="submit" class="btn btn-success shadow">Update</button>
+                            <button type="submit" class="btn btn-danger shadow">Reomove</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card mb-3 m-2 task-box  rounded shadow box-6 text-light rotated-left" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-light"><small class="fst-italic" >12:03:28 27/10/2022</small></div>
+                        <div class="card-body text-light">
+                          <h5>Task 6</h5>
+                          <div class="spinner-border text-warning" role="status"> </div>
                         <span >REVIEW</span>
                         <div class="spinner-grow text-info" role="status">  </div>
                             <span>Medium</span>
+                        </div>
+                        <div class="card-footer bg-transparent border-light">
+                            <button type="submit" class="btn btn-success shadow">Update</button>
+                            <button type="submit" class="btn btn-danger shadow">Reomove</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
+               
               </div>
         </div>
        
