@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Work Sans', sans-serif!important;
+}
+h1{
+    background-color: rgb(232, 215, 194);
+    color: rgb(237, 177, 100);
+}
+.input, .task{
+    background-color: hsl(250, 12%, 80%);
+}
+.task-box{
+    width: 240px!important;
+    height: 130px;
+}
+.box-2{
+    background-color: rgba(255, 119, 0, 0.846);
+}
+.box-5{
+    background-color: rgba(210, 147, 238, 0.9);
+}
+.box-6{
+    background-color: rgba(205, 74, 203, 0.9);
+}
+.rotated-left {
+    transform: rotate(-5deg); 
+  }
+.rotated-right {
+    transform: rotate(5deg); 
+  }
