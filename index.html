@@ -18,7 +18,78 @@
         </div>
 <div class="row">
     <div class="col">
-        <div class="input rounded p-4 shadow">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add task
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content " style="background-color: hsl(250, 12%, 80%);">
+              <div class="modal-header">
+                  <h1 class=" modal-title fs-5 text-primary bg-transparent" id="exampleModalLabel" >New Task</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form action="">
+              <div class="modal-body">
+                  <div class="mb-3">
+                      <label for="taskName"> Name:</label>
+                      <input class="form-control" type="text" id="taskName" required="required">
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="taskDes"> Description:</label>
+                      <input class="form-control" type="textarea" id="taskDes" required="required">
+
+                  </div>
+
+                  <div class="mb-3 row">
+                      <label class="col" for="assignTo">Assigned to:</label>
+                      <select class="form-control col" id="assignTo" required="required">
+                          <option>Danny</option>
+                          <option>Zubera</option>
+                          <option>Yi</option>
+                          <option>Others</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3 row">
+                      <label class="col" for="dueDate"> Due date:</label>
+                      <input class="form-control col" type="date" id="dueDate" required="required">
+                  </div>
+
+                  <div class="mb-3 row">
+                      <label class="col" for="taskSt">Status:</label>
+                      <select class="form-control col" id="taskSt" required="required">
+                          <option>To do</option>
+                          <option>In process</option>
+                          <option>Review</option>
+                          <option>Completed</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="comment"> Comment:</label>
+                      <input class="form-control" type="textarea" id="comment">
+
+                  </div>
+
+
+
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="reset" class="btn btn-warning">Reset</button>
+              </div>
+          </form>
+          </div>
+      </div>
+  </div>
+
+
+        <!-- <div class="input rounded p-4 shadow">
 
             <form>
                 <div class="row mb-3">
@@ -80,7 +151,7 @@
                 <button type="submit" class=" col-sm-2 me-4 btn btn-success shadow">Submit</button>
                 </div>
               </form>
-        </div>
+        </div> -->
     </div>
     <div class="col">
         <div class="task rounded p-3 shadow">
