@@ -18,7 +18,66 @@
         </div>
 <div class="row">
     <div class="col">
-        <div class="input rounded p-4 shadow">
+      <div class="inputTask">
+
+        <h2>New task</h2>
+        <form class="newTask" action="submit">
+
+            <div class="taskName">
+                <label for="taskName"> Name:</label>
+                <input class="info" type="text" id="taskName" required="required">
+            </div>
+
+            <div class="taskDes">
+                <label for="taskDes"> Description:</label> 
+                <input class="info" type="textarea" id="taskDes" required="required">
+
+            </div>
+
+            <div class="assignTo">
+                <label for="assignTo">Assigned to:</label>
+                <select class="info" id="assignTo" required="required">
+                    <option>Meiri</option>
+                    <option>Liz</option>
+                    <option>Yi</option>
+                    <option>Others</option>
+                </select>
+            </div>
+
+            <div class="dueDate">
+                <label for="dueDate"> Due date:</label>
+                <input class="info" type="date" id="dueDate" required="required">
+            </div>
+
+            <div class="taskStatus">
+                <label for="taskSt">Status:</label>
+                <select class="info" id="taskSt" required="required">
+                    <option>To do</option>
+                    <option>In process</option>
+                    <option>Review</option>
+                    <option>Completed</option>
+                </select>
+            </div>
+
+            <div class="comment">
+                <label for="comment"> Comment:</label> 
+                <input  class="info" type="textarea" id="comment">
+
+            </div>
+
+            <div class="btn">
+                <!-- <input type="submit" value="Submit">
+                <input type="reset" value="Reset"> -->
+                <button class="submit">Submit</button>
+                <button class="reset">Reset</button>
+                <button class="cancel">Cancel</button>
+            </div>
+
+
+
+        </form>
+    </div>
+        <!-- <div class="input rounded p-4 shadow">
 
             <form>
                 <div class="row mb-3">
@@ -80,7 +139,7 @@
                 <button type="submit" class=" col-sm-2 me-4 btn btn-success shadow">Submit</button>
                 </div>
               </form>
-        </div>
+        </div> -->
     </div>
     <div class="col">
         <div class="task rounded p-3 shadow">
