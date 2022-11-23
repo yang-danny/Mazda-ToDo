@@ -1,4 +1,77 @@
 
+// task 4
+
+const taskName = document.getElementById("taskName");
+const taskDes = document.getElementById("taskDes");
+const assignTo=document.getElementById('assignTo')
+const dueDate = document.getElementById("dueDate");
+const dueDateIn = new Date(dueDate.value);
+const taskSt=document.getElementById('taskSt')
+const commentIn=document.getElementById('comment')
+const btnSubmit = document.getElementById("submitBut");
+let taskArray= new Array
+
+const validate=()=> {
+    // return a value if it is true it is ready for submit
+    let valid = true;
+//validate  task name
+    if (taskName.value.length < 8) {
+        const nameError = document.getElementById("nameError");
+        nameError.classList.add("visible");
+        taskName.classList.add("invalid");
+        return valid = false;
+    } else {
+        nameError.classList.remove("visible");
+        taskName.classList.remove("invalid");
+
+    };
+
+    //validate  description
+
+    if (taskDes.value.length < 15) {
+        const nameError1 = document.getElementById("nameError1");
+        nameError1.classList.add("visible");
+        taskDes.classList.add("invalid");
+        return valid = false;
+    } else {
+        nameError1.classList.remove("visible");
+        taskDes.classList.remove("invalid");
+
+    };
+
+    //check due day
+    const today = new Date();
+
+    if (!dueDate.value || dueDateIn < today) {
+        const nameError2 = document.getElementById("nameError2");
+        nameError2.classList.add("visible");
+        dueDate.classList.add("invalid");
+        return valid = false;
+    } else {
+        nameError2.classList.remove("visible");
+        dueDate.classList.remove("invalid");
+
+    };
+
+    return valid;
+
+};
+
+// task 5  display day month year
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth();
+const currentDay = currentDate.getDate();
+const dayBox = document.getElementById('dayBox');
+const monthBox = document.getElementById('monthBox');
+const yearBox = document.getElementById('yearBox');
+
+dayBox.innerHTML = currentDay;
+monthBox.innerHTML = currentMonth + 1;
+yearBox.innerHTML = currentYear;
+
+
+//Task 6
 // Create a TaskManager class
 class TaskManger {
     static lastID=0
@@ -51,36 +124,46 @@ set comment(newComment){
     this._comment=newComment
 }
 
+
 }
 //Creat a task as an instance of TaskManager class object
-const task= new TaskManger()
+// const task= new TaskManger()
 //Add and stored task object in an array
- const taskArray=[]
+
 
 //  Add  a task to existing Tasks List
-const  addTask=(task)=>{
-    taskArray.push(task)
-}
+// const  addTask=(task)=>{
+//     taskArray.push(task)
+//     getAllTasks()
+//     displayTask(taskArray)
+// }
 // function to return the list of ALL tasks
-const getAllTasks=()=>{
-for(let i=0;i<taskArray.length;i++){
-    console.log(taskArray[i])
-}
-}
+// const getAllTasks=()=>{
+// for(let i=0;i<taskArray.length;i++){
+//     console.log(taskArray[i])
+// }
+// }
 // Get all Tasks with a given status
 const getTasksWithStatus=(status)=>{
    let outTask=taskArray.filter(task=>task.status===status)
    console.log(outTask)
 }
-console.log(taskArray)
+
 //getTasksWithStatus('To Do')
-addTask(new TaskManger('Leo','new task','Leo','01/12/2022','Done','on time'))
-addTask(new TaskManger('Eason','new task','eason','01/12/2022','To Do','on time'))
-addTask(new TaskManger('danny','new task','danny','01/12/2022','Review','on time'))
-addTask(new TaskManger('Leo','new task','leo','01/12/2022','Done','on time'))
-addTask(new TaskManger('Eason','new task','eason','01/12/2022','In Progress','on time'))
-addTask(new TaskManger('danny','new task','danny','01/12/2022','Done','on time'))
-getAllTasks()
+
+btnSubmit.addEventListener('click',()=>{
+   document.getElementById("list-items").innerHTML='';
+    
+   if(validate()){
+      //  display the score and highlight the correct answers when the button is clicked.
+      //taskArray.push(new TaskManger('danny-yang','taskDes.valuetaskDes.value','danny','11/12/2022','done','commentIn.value'))
+      taskArray.push(new TaskManger(taskName.value,taskDes.value,assignTo.value,'11/12/2022',taskSt.value,commentIn.value))
+      displayTask(taskArray)
+      console.log(taskArray)
+   }
+
+    })
+
 
 // creates a Card Layout HTML as defined on previous tasks object
 const displayTask=(task)=>{
@@ -110,90 +193,4 @@ task.forEach(element => {
     itemsContainer.innerHTML += taskHTML; 
 });     
 }
-displayTask(taskArray)
-
-// task 5  display day month year
-const currentDate = new Date();
-const currentYear = currentDate.getFullYear();
-const currentMonth = currentDate.getMonth();
-const currentDay = currentDate.getDate();
-const dayBox = document.getElementById('dayBox');
-const monthBox = document.getElementById('monthBox');
-const yearBox = document.getElementById('yearBox');
-
-dayBox.innerHTML = currentDay;
-monthBox.innerHTML = currentMonth + 1;
-yearBox.innerHTML = currentYear;
-
-
-
-// task 4
-const submit = document.getElementById("submitBut");
-
-submit.addEventListener("click", validate);
-
-function validate(e) {
-    e.preventDefault();
-
-    // return a value if it is true it is ready for submit
-    let valid = true;
-    //validate task name 
-
-    const firstNameField = document.getElementById("taskName");
-    const nameValue = firstNameField.value;
-    //alert(nameValue.length);
-
-
-
-    if (nameValue.length < 8) {
-        const nameError = document.getElementById("nameError");
-        nameError.classList.add("visible");
-        firstNameField.classList.add("invalid");
-        return valid = false;
-    } else {
-        nameError.classList.remove("visible");
-        firstNameField.classList.remove("invalid");
-
-    };
-
-    //validate  description
-    const taskInfo = document.getElementById("taskDes");
-    const taskValue = taskInfo.value;
-    // alert(taskValue.length);
-
-
-
-    if (taskValue.length < 15) {
-        const nameError1 = document.getElementById("nameError1");
-        nameError1.classList.add("visible");
-        taskInfo.classList.add("invalid");
-        return valid = false;
-    } else {
-        nameError1.classList.remove("visible");
-        taskInfo.classList.remove("invalid");
-
-    };
-
-    //check due day
-    const dueDate = document.getElementById("dueDate");
-    const dueDateIn = new Date(dueDate.value);
-    const today = new Date();
-    // alert(dueDateIn);
-
-    if (!dueDate.value || dueDateIn < today) {
-        const nameError2 = document.getElementById("nameError2");
-        nameError2.classList.add("visible");
-        dueDate.classList.add("invalid");
-        return valid = false;
-    } else {
-        nameError2.classList.remove("visible");
-        dueDate.classList.remove("invalid");
-
-    };
-
-    return valid;
-
-
-};
-
 
