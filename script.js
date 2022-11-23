@@ -162,13 +162,11 @@ btnSubmit.addEventListener('click',(e)=>{
       displayTask(taskArray)
       console.log(taskArray)
       //    reset form fields
-   document.getElementById("myForm").reset();
-   document.getElementById('exampleModal').classList.add('hide')
+      document.getElementById("myForm").reset();
    }
 
 e.preventDefault()
     })
-
 
 // creates a Card Layout HTML as defined on previous tasks object
 const displayTask=(task)=>{
