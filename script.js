@@ -12,6 +12,7 @@ const btnSubmit = document.getElementById("submitBut");
 let taskArray= new Array
 
 const validate=()=> {
+  
     // return a value if it is true it is ready for submit
     let valid = true;
 //validate  task name
@@ -151,17 +152,21 @@ const getTasksWithStatus=(status)=>{
 
 //getTasksWithStatus('To Do')
 
-btnSubmit.addEventListener('click',()=>{
+btnSubmit.addEventListener('click',(e)=>{
    document.getElementById("list-items").innerHTML='';
     
    if(validate()){
-      //  display the score and highlight the correct answers when the button is clicked.
-      //taskArray.push(new TaskManger('danny-yang','taskDes.valuetaskDes.value','danny','11/12/2022','done','commentIn.value'))
-      taskArray.push(new TaskManger(taskName.value,taskDes.value,assignTo.value,'11/12/2022',taskSt.value,commentIn.value))
+      //  add task info into TaskManager array list
+     taskArray.push(new TaskManger(taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value))
+     //show task box in HTML
       displayTask(taskArray)
       console.log(taskArray)
+      //    reset form fields
+   document.getElementById("myForm").reset();
+   document.getElementById('exampleModal').classList.add('hide')
    }
 
+e.preventDefault()
     })
 
 
@@ -193,4 +198,5 @@ task.forEach(element => {
     itemsContainer.innerHTML += taskHTML; 
 });     
 }
+
 
