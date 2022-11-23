@@ -1,3 +1,19 @@
+// task 5  display day month year
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth();
+const currentDay = currentDate.getDate();
+const dayBox = document.getElementById('dayBox');
+const monthBox = document.getElementById('monthBox');
+const yearBox = document.getElementById('yearBox');
+
+dayBox.innerHTML = currentDay;
+monthBox.innerHTML = currentMonth + 1;
+yearBox.innerHTML = currentYear;
+
+
+
+// task 4
 const submit = document.getElementById("submitBut");
 
 submit.addEventListener("click", validate);
@@ -65,3 +81,4 @@ function validate(e) {
 
 
 };
+
