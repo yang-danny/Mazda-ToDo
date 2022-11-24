@@ -134,22 +134,26 @@ getTasksWithStatus(status){
 }
 //Add a card once created with all the details of task.
 btnSubmit.addEventListener('click',(e)=>{
-
+//Form fields data validation
    if(validate()){
-      //  add task info into TaskManagers array list 
-    let task= new TaskManagers()
-    task.addTask(taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value)
-   //show task box in HTML
-   task.getTasksWithStatus('TO DO')
-    displayTask(task.getAllTasks())
-    //    reset form fields
-    document.getElementById("myForm").reset();
+    //call render method to add new tasks
+     render();
    }
-e.preventDefault()
+e.preventDefault();
     })
 
+//Each time a new task is added, the render() method is called todisplay the new task.
+const render=()=>{
+     //  add task info into TaskManagers array list 
+     let task= new TaskManagers();
+     task.addTask(taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value)
+    //show task box in HTML
+    createTaskHTML(task.getAllTasks());
+     //    reset form fields
+     document.getElementById("myForm").reset();
+}
 // creates a Card Layout HTML as defined on previous tasks object
-const displayTask=(task)=>{
+const createTaskHTML=(task)=>{
 task.forEach(element => {
    const taskHTML=` <div class="col ">
         <div class="card mb-3 bg-info m-2 task-box p-1 rounded shadow box-1 text-light" style="max-width: 18rem;">
