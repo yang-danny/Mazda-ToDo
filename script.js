@@ -1,6 +1,4 @@
-
 // task 4
-
 const taskName = document.getElementById("taskName");
 const taskDes = document.getElementById("taskDes");
 const assignTo=document.getElementById('assignTo')
@@ -9,10 +7,8 @@ const dueDateIn = new Date(dueDate.value);
 const taskSt=document.getElementById('taskSt')
 const commentIn=document.getElementById('comment')
 const btnSubmit = document.getElementById("submitBut");
-let taskArray= new Array
 
 const validate=()=> {
-  
     // return a value if it is true it is ready for submit
     let valid = true;
 //validate  task name
@@ -24,11 +20,8 @@ const validate=()=> {
     } else {
         nameError.classList.remove("visible");
         taskName.classList.remove("invalid");
-
     };
-
     //validate  description
-
     if (taskDes.value.length < 15) {
         const nameError1 = document.getElementById("nameError1");
         nameError1.classList.add("visible");
@@ -37,12 +30,9 @@ const validate=()=> {
     } else {
         nameError1.classList.remove("visible");
         taskDes.classList.remove("invalid");
-
     };
-
     //check due day
     const today = new Date();
-
     if (!dueDate.value || dueDateIn < today) {
         const nameError2 = document.getElementById("nameError2");
         nameError2.classList.add("visible");
@@ -51,11 +41,8 @@ const validate=()=> {
     } else {
         nameError2.classList.remove("visible");
         dueDate.classList.remove("invalid");
-
     };
-
     return valid;
-
 };
 
 // task 5  display day month year
@@ -70,7 +57,6 @@ const yearBox = document.getElementById('yearBox');
 dayBox.innerHTML = currentDay;
 monthBox.innerHTML = currentMonth + 1;
 yearBox.innerHTML = currentYear;
-
 
 //Task 6
 // Create a TaskManager class
@@ -124,47 +110,41 @@ set status(newStatus){
 set comment(newComment){
     this._comment=newComment
 }
-
-
 }
-//Creat a task as an instance of TaskManager class object
-// const task= new TaskManger()
-//Add and stored task object in an array
-
-
-//  Add  a task to existing Tasks List
-// const  addTask=(task)=>{
-//     taskArray.push(task)
-//     getAllTasks()
-//     displayTask(taskArray)
-// }
-// function to return the list of ALL tasks
-// const getAllTasks=()=>{
-// for(let i=0;i<taskArray.length;i++){
-//     console.log(taskArray[i])
-// }
-// }
-// Get all Tasks with a given status
-const getTasksWithStatus=(status)=>{
-   let outTask=taskArray.filter(task=>task.status===status)
-   console.log(outTask)
+class TaskManagers{
+    // Each task object should be added to and stored in an array variable
+    constructor(){
+        this.taskMangers=[];
+    }
+// Add Task -> a task to existing Tasks List
+addTask(taskName,taskDes,assignTo,dueDate,taskSt,commentIn){
+    let task=new TaskManger(taskName,taskDes,assignTo,dueDate,taskSt,commentIn);
+this.taskMangers.push(task);
+return task;
 }
-
-//getTasksWithStatus('To Do')
-
+// Get Tasks -> returns the list of ALL tasks
+getAllTasks(){
+    return this.taskMangers
+}
+// Get all Tasks with a given status -> returns a list of all tasks where a status equal to the status passes as an argument
+getTasksWithStatus(status){
+    let filterTask=this.taskMangers.filter(task=>task.status===status)
+    return filterTask
+}
+}
+//Add a card once created with all the details of task.
 btnSubmit.addEventListener('click',(e)=>{
-   document.getElementById("list-items").innerHTML='';
-    
-   if(validate()){
-      //  add task info into TaskManager array list
-     taskArray.push(new TaskManger(taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value))
-     //show task box in HTML
-      displayTask(taskArray)
-      console.log(taskArray)
-      //    reset form fields
-      document.getElementById("myForm").reset();
-   }
 
+   if(validate()){
+      //  add task info into TaskManagers array list 
+    let task= new TaskManagers()
+    task.addTask(taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value)
+   //show task box in HTML
+   task.getTasksWithStatus('TO DO')
+    displayTask(task.getAllTasks())
+    //    reset form fields
+    document.getElementById("myForm").reset();
+   }
 e.preventDefault()
     })
 
@@ -188,7 +168,7 @@ task.forEach(element => {
               
           <div class="card-footer bg-transparent border-light">              
               <button type="submit" class="btn btn-success shadow">Update</button>
-              <button type="submit" class="btn btn-danger shadow">Remove</button>
+              <button type="submit" class="btn btn-danger shadow">Delete</button>
           </div>
         </div>
       </div>`
