@@ -45,24 +45,9 @@ const validate=()=> {
     return valid;
 };
 
-// task 5  display day month year
-const currentDate = new Date();
-const currentYear = currentDate.getFullYear();
-const currentMonth = currentDate.getMonth();
-const currentDay = currentDate.getDate();
-const dayBox = document.getElementById('dayBox');
-const monthBox = document.getElementById('monthBox');
-const yearBox = document.getElementById('yearBox');
-
-dayBox.innerHTML = currentDay;
-monthBox.innerHTML = currentMonth + 1;
-yearBox.innerHTML = currentYear;
-
 // Updated Task-5
 // Added Current Date/Time
-
 setInterval(displayTime, 1000);
-
 function displayTime() {
   const time = new Date();
   const day = time.getDate();
@@ -90,7 +75,7 @@ function displayTime() {
     if (sec < 10) {
   sec = '0' + sec;
 }
-document.getElementById('cDateTime').innerHTML = `${currentDate} ${hrs}:${min}:${sec} ${en}`;
+document.getElementById('cDateTime').innerHTML = `Date/Time: ${currentDate} ${hrs}:${min}:${sec} ${en}`;
 };
 
 

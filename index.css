@@ -59,7 +59,7 @@ h1 {
 }
 
 /* Task box style */
-.task {
+.task, #cDateTime{
     background-color: hsl(250, 12%, 80%) !important;
 }
 
