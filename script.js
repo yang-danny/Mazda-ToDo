@@ -3,7 +3,6 @@ const taskName = document.getElementById("taskName");
 const taskDes = document.getElementById("taskDes");
 const assignTo=document.getElementById('assignTo')
 const dueDate = document.getElementById("dueDate");
-const dueDateIn = new Date(dueDate.value);
 const taskSt=document.getElementById('taskSt')
 const commentIn=document.getElementById('comment')
 const btnSubmit = document.getElementById("submitBut");
@@ -33,6 +32,7 @@ const validate=()=> {
     };
     //check due day
     const today = new Date();
+    const dueDateIn = new Date(dueDate.value);
     if (!dueDate.value || dueDateIn < today) {
         const nameError2 = document.getElementById("nameError2");
         nameError2.classList.add("visible");
