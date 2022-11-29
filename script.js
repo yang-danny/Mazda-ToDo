@@ -1,3 +1,4 @@
+
 // task 4
 const taskName = document.getElementById("taskName");
 const taskDes = document.getElementById("taskDes");
@@ -80,69 +81,45 @@ document.getElementById('cDateTime').innerHTML = `Date/Time: ${currentDate} ${hr
 };
 
 
+//task 8 use localstorage
+//1.check the localstorage and load the data if there is nothing create array 
+const data = localStorage.getItem("alltasks");
+const taskList = data ? JSON.parse(data) : [];
+
+
+//add task into locastorge
+
+class Task {
+    constructor(id,name,description,assignTo, dueDate,status,comment){
+        this.id=id
+        this.name=name
+        this.description=description
+        this.assigTo=assignTo
+        this.dueDate=dueDate
+        this.status=status
+        this.comment=comment
+    }
+
+}
+
+// const task1 = new Task('1','1','1','1','1','1','1')
+// const task2 = new Task('2','2','2','2','2','2','2')
+
+
+
 //Task 6
 // Create a TaskManager class
-class TaskManger {
-    static lastID=0
-    constructor(name,description,assignTo, dueDate,status,comment){
-        this._id=++TaskManger.lastID
-        this._name=name
-        this._description=description
-        this._assigTo=assignTo
-        this._dueDate=dueDate
-        this._status=status
-        this._comment=comment
-    }
-    get id(){
-        return this._id
-    }
-    get name(){
-        return this._name
-    }
-    get description(){
-        return this._description
-    }
-    get assignTo(){
-        return this._assigTo
-    }
-    get dueDate(){
-        return this._dueDate
-    }
-    get status(){
-        return this._status
-    }
-    get comment(){
-        return this._comment
-    }
-set name(newName){
-   this._name=newName
-}
-set description(newDescription){
-    this._description=newDescription
-}
-set assignTo(newAssignTo){
-    this._assigTo=newAssignTo
-}
-set dueDate(newDueDate){
-    this._dueDate=newDueDate
-}
-set status(newStatus){
-    this._status=newStatus
-}
-set comment(newComment){
-    this._comment=newComment
-}
-}
+
 class TaskManagers{
     // Each task object should be added to and stored in an array variable
-    constructor(){
-        this.taskMangers=[];
+    constructor(taskList){
+        this.taskMangers=taskList;
     }
-// Add Task -> a task to existing Tasks List
-addTask(taskName,taskDes,assignTo,dueDate,taskSt,commentIn){
-    let task=new TaskManger(taskName,taskDes,assignTo,dueDate,taskSt,commentIn);
-this.taskMangers.push(task);
-return task;
+// Add Task -> a task to existing Tasks List and save to localstorage
+addTask(task){
+    this.taskMangers.push(task);
+//save taskManager in to local storage  yi 11.29
+    localStorage.setItem("alltasks", JSON.stringify(this.taskMangers))
 }
 // Get Tasks -> returns the list of ALL tasks
 getAllTasks(){
@@ -154,53 +131,114 @@ getTasksWithStatus(status){
     return filterTask
 }
 }
+
+const tasks = new TaskManagers(taskList)
+
+// tasks.addTask(task1)
+// tasks.addTask(task2)
+
+// console.log(taskList.length)
+
+
+
+
 //Add a card once created with all the details of task.
 btnSubmit.addEventListener('click',(e)=>{
+    e.preventDefault();
 //Form fields data validation
    if(validate()){
-    //call render method to add new tasks
-     render();
+    //call add new task 
+    console.log(taskList.length);
+    let taskId = taskList.length?taskList[taskList.length - 1].id/1 + 1
+    : 1;
+    const newTask = new Task(taskId,taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value)
+    tasks.addTask(newTask)
+    render()
+    //reset form
+    document.getElementById("myForm").reset()
    }
-e.preventDefault();
+
     })
 
-//Each time a new task is added, the render() method is called todisplay the new task.
-const render=()=>{
-     //  add task info into TaskManagers array list 
-     let task= new TaskManagers();
-     task.addTask(taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value)
-    //show task box in HTML
-    createTaskHTML(task.getAllTasks());
-     //    reset form fields
-     document.getElementById("myForm").reset();
-}
-// creates a Card Layout HTML as defined on previous tasks object
-const createTaskHTML=(task)=>{
-task.forEach(element => {
-   const taskHTML=` <div class="col ">
+// //Each time a new task is added, the render() method is called todisplay the new task.
+const itemsContainer = document.getElementById("list-items")
+
+const render=()=>{  
+    const tasks = taskList.map((element, index) => {
+        return` <div class="col ">
         <div class="card mb-3 bg-info m-2 task-box p-1 rounded shadow box-1 text-light" style="max-width: 18rem;">
           <div class="card-header bg-transparent border-light"><small class="fst-italic" >Due Date:
           ${element.dueDate}</small></div>
           <div class="card-body text-light">
             <h5>Name: ${element.name}</h5>
             <p>Description: ${element.description}</p>
-            <p>Assign To:    <select class="form-control col me-3" id="assignTo" required="required">
-            <option>${element.assignTo}</option>
-           
-        </select></p>
+            <p>Assign To: <span >${element.description}</span></p>
             <p>Comment: ${element.comment}</p>
             <div class="spinner-border text-light" role="status"> </div>
                 <span >${element.status}</span>
               
           <div class="card-footer bg-transparent border-light">              
               <button type="submit" class="btn btn-success shadow">Update</button>
-              <button type="submit" class="btn btn-danger shadow">Delete</button>
+              <button type="submit" class="btn btn-danger shadow"><a href="javascript:" class="text-decoration-none text-white" data-id=${index}>delete</a></button>
           </div>
         </div>
       </div>`
-    const itemsContainer = document.getElementById("list-items");
-    itemsContainer.innerHTML += taskHTML; 
-});     
+})
+    itemsContainer.innerHTML = tasks.join("")
 }
+
+// render()
+// creates a Card Layout HTML as defined on previous tasks object
+// const createTaskHTML=(tasks)=>{
+// tasks.forEach((element, index) => {
+//    const taskHTML=` <div class="col ">
+//         <div class="card mb-3 bg-info m-2 task-box p-1 rounded shadow box-1 text-light" style="max-width: 18rem;">
+//           <div class="card-header bg-transparent border-light"><small class="fst-italic" >Due Date:
+//           ${element.dueDate}</small></div>
+//           <div class="card-body text-light">
+//             <h5>Name: ${element.name}</h5>
+//             <p>Description: ${element.description}</p>
+//             <p>Assign To:    <select class="form-control col me-3" id="assignTo" required="required">
+//             <option>${element.assignTo}</option>
+           
+//         </select></p>
+//             <p>Comment: ${element.comment}</p>
+//             <div class="spinner-border text-light" role="status"> </div>
+//                 <span >${element.status}</span>
+              
+//           <div class="card-footer bg-transparent border-light">              
+//               <button type="submit" class="btn btn-success shadow">Update</button>
+//               <button type="submit" class="btn btn-danger shadow"><a href="javascript:" class="text-decoration-none text-white" data-id=${index}>delete</a></button>
+//           </div>
+//         </div>
+//       </div>`
+//     const itemsContainer = document.getElementById("list-items");
+//     itemsContainer.innerHTML += taskHTML; 
+// });     
+// }
+
+//active render function which will display cards once open page
+render()
+
+//delete task
+function deleteTask(){
+    const itemsContainer = document.getElementById("list-items")
+    itemsContainer.addEventListener('click', function(e){
+        if(e.target.tagName ==='A'){
+        const del = e.target.dataset.id;
+        taskList.splice(del, 1);
+        }
+        localStorage.setItem("alltasks", JSON.stringify(taskList));
+        render()
+       console.log('111');
+    }
+    )
+}
+
+
+//active delete function
+deleteTask()
+
+
 
 
