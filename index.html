@@ -106,10 +106,34 @@
        <!-- Task box -->
       <div class="d-flex aligns-items-center justify-content-center ">  
         <!-- Task list group -->
-          <div class="list-group w-75 task rounded shadow d-flex aligns-items-center justify-content-center">
+          <div class="list-group w-75 bg-transparent rounded shadow d-flex aligns-items-center justify-content-center">
             <!-- Task list item for 1st row-->
-            <div class="list-group-item grid task">
-              <div class="row " id="list-items"> 
+            
+            <div class="list-group-item bg-transparent grid d-flex flex-row justify-content-center" id="list-items">
+              <!-- <div class="container text-center d-flex flex-row justify-content-center" id="list-items"> -->
+                <div class="g-col-3">
+                  <div class="p-3 bg-transparent border-0" >
+                     <h4 class="text-center text-danger">To Do Tasks:</h4>
+                  </div>
+                  <div class="p-3 bg-transparent border-0" id="todo"></div>
+                </div>
+                  <div class="g-col-3">
+                    <div class="p-3 bg-transparent border-0" >
+                      <h4 class="text-center text-warning">In Progress Tasks:</h4>
+                   </div>
+                    <div class="p-3 bg-transparent border-0" id="progress"></div>
+                  </div>
+                  <div class="g-col-3">
+                    <div class="p-3 bg-transparent border-0" >
+                      <h4 class="text-center text-info">Review Tasks:</h4>
+                   </div>
+                    <div class="p-3 bg-transparent border-0" id="review"></div>
+                  </div>
+                  <div class="g-col-3">
+                    <div class="p-3 bg-transparent border-0" >
+                      <h4 class="text-center text-black-50">Done Tasks:</h4>
+                   </div>
+                    <div class="p-3  bg-transparent border-0" id="done"></div>
               </div>
             </div>
           </div>  

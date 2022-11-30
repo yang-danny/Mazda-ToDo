@@ -43,23 +43,29 @@ btnSubmit.addEventListener('click',(e)=>{
     itemsContainer.addEventListener('click', function(e){
         //Click Delete button to toggle event
         if(e.target.id ==='del'){
-        //track event by task id
-        const del = e.target.dataset.id;
-        //delete task by id
-        taskList.splice(del, 1);
-        } else 
+    //function to delete task from task array
+        const deleteTask=(value,index,arr)=>{
+            //check which task need to be deleted
+            if(value.id===parseInt(e.target.dataset.id)){
+            //delete task
+                arr.splice(index,1)
+            }
+        }
+        //filter task list with delete task
+        taskList.filter(deleteTask)
+        }
         //Click Done button to toggle event
         if(e.target.id ==="done"){
         //Map each task from taskList array
                for (let task of taskList){
                 //toggle task by id
-                if(task.id===parseInt(e.target.dataset.id)+1){  
+                if(task.id===parseInt(e.target.dataset.id)){  
                 //update task status to DONE
                 task.status='DONE' 
-            }
+            }      
     }
     }
-    //update local storage
+    //update local storage with new task list array
     localStorage.setItem("alltasks", JSON.stringify(taskList));
     //reload task boxes
     render(taskList)
