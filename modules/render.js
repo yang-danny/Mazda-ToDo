@@ -7,7 +7,8 @@ const doneContainer = document.getElementById("done")
 const render=(taskList)=>{  
   //put to do tasks into grid
   //filter out to do tasks from array 
-  const todoList=taskList.filter(element=>element.status==='TODO')
+ const todoList=taskList.filter(element=>element.status==='TODO')
+
   //map each task to HTML code
   const todoTask=todoList.map((element,index)=>{
     return`<div class="col">

@@ -19,7 +19,7 @@ getAllTasks(){
 // Get all Tasks with a given status -> returns a list of all tasks where a status equal to the status passes as an argument
 getTasksWithStatus(status){
     let filterTask=this.taskManger.filter(task=>task.status===status)
-    return filterTask
+    return this.taskManger
 }
 }
 

@@ -4,6 +4,7 @@ import validate from "./modules/validate.js"
 import displayTime from "./modules/disPlayTime.js";
 import render from "./modules/render.js";
 
+const displayUser=document.getElementById("display-user");
 const taskName = document.getElementById("taskName");
 const taskDes = document.getElementById("taskDes");
 const assignTo=document.getElementById('assignTo')
@@ -15,12 +16,26 @@ const itemsContainer = document.getElementById("list-items")
 const data = localStorage.getItem("alltasks");
 const taskList = data ? JSON.parse(data) : [];
 const tasks = new TaskManager(taskList)
+let loginUser = JSON.parse(localStorage.getItem('loginUser'))||[];
+const logout= document.getElementById("logout");
 
-//index page load task boxes and display date and time
+//index page load task boxes and display date/time and user name
 window.addEventListener('DOMContentLoaded', () => {
+    if (loginUser.length===0){
+        window.location.replace("login.html"); 
+    } else {
+    displayUser.innerHTML='Hi, '+loginUser[0]
     setInterval(displayTime, 1000);
-    render(taskList)
+    render(tasks.getAllTasks())
+}
     });
+
+//Log out and return to login page
+logout.addEventListener('click',()=>{
+    //clear login user from local storage
+   localStorage.removeItem("loginUser")
+   window.location.replace("login.html"); 
+})
 
 //Add a card once created with all the details of task.
 btnSubmit.addEventListener('click',(e)=>{
@@ -33,7 +48,7 @@ btnSubmit.addEventListener('click',(e)=>{
     const newTask = new Task(taskId,taskName.value,taskDes.value,assignTo.value,dueDate.value,taskSt.value,commentIn.value)
     tasks.addTask(newTask)
     //reload task boxes
-    render(taskList)
+    render(tasks.getAllTasks())
     //reset form
     document.getElementById("myForm").reset()
    }
@@ -68,6 +83,6 @@ btnSubmit.addEventListener('click',(e)=>{
     //update local storage with new task list array
     localStorage.setItem("alltasks", JSON.stringify(taskList));
     //reload task boxes
-    render(taskList)
+    render(tasks.getAllTasks())
 })
 
